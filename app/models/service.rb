@@ -3,5 +3,5 @@ class Service < ActiveRecord::Base
     has_many :job_services
     has_many :jobs, through: :job_services
 
-    validates :title, :price, presence: true
+    validates :name, :price, presence: true
 end
