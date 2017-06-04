@@ -8,4 +8,5 @@ use Rack::MethodOverride
 use LoginController
 use ServiceController
 use ClientController
+use JobsController
 run ApplicationController
