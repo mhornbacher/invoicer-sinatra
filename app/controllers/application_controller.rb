@@ -45,7 +45,7 @@ class ApplicationController < Sinatra::Base
             if item && item.user != current_user
                 flash[:message] = "Error: Permission Denied."
                 redirect(redirect_path)
-            elsif item.nil?
+            elsif item.nil? # handle bad objects here as well
                 redirect(redirect_path)
             end
         end
