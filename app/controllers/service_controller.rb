@@ -1,7 +1,8 @@
 class ServiceController < ApplicationController
 
-    get '/dashboard' do
+    get '/services' do
         authenticate!
-        erb :"user/dashboard"
+        erb :"services/index"
     end
+    
 end

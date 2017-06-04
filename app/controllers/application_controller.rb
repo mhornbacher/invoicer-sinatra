@@ -24,6 +24,10 @@ class ApplicationController < Sinatra::Base
     get '/' do
         erb :homepage
     end
+    get '/dashboard' do
+        authenticate!
+        erb :dashboard
+    end
 
     helpers do
         include Rack::Utils
