@@ -1,7 +1,7 @@
 class ServiceController < ApplicationController
-    
+
     get '/dashboard' do
-        block_logged_out
+        authenticate!
         erb :"user/dashboard"
     end
 end

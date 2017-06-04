@@ -33,7 +33,6 @@ class LoginController < ApplicationController
     end
 
     get '/logout' do
-        block_logged_out
         session.clear
         erb :"login/logout"
     end
