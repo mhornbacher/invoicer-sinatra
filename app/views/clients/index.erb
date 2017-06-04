@@ -1,0 +1,8 @@
+<h1>My Clients</h1>
+<ul>
+<% for client in current_user.clients.order(:name) %>
+<li><a href="/clients/<%=client.id%>"><%= client.name%></a></li>
+<% end %>
+</ul>
+<br/>
+<a class="btn btn-primary" href="/clients/new">Add Client</a>

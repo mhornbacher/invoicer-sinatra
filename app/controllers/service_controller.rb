@@ -11,7 +11,7 @@ class ServiceController < ApplicationController
         if service.save
             redirect '/services'
         else
-            flash[:message] = user.errors.collect{|field, error| "#{field.to_s.capitalize}: #{error}"}.join("<br/>")
+            flash[:message] = service.errors.collect{|field, error| "#{field.to_s.capitalize}: #{error}"}.join("<br/>")
             redirect '/services/new'
         end
     end

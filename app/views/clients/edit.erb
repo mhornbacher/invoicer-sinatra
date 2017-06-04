@@ -1,0 +1,13 @@
+<h1>Edit Client</h1>
+<% if flash.has?(:message) %>
+    <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
+<% end %>
+<form action="/clients/<%=@client.id%>/edit" method="post">
+<input class="form-control" type="text" name="client[name]" placeholder="Client Name*" value="<%=@client.name%>" required>
+<br/>
+<input class="form-control"type="email" name="client[email]" placeholder="Client Email*" value="<%=@client.email%>" required>
+<br/>
+<input class="form-control"type="text" name="client[phone_number]" value="<%=@client.phone_number%>" placeholder="Client Phone Number">
+<br/>
+<input class="btn btn-primary" type="submit" value="Edit Client">
+</form>
