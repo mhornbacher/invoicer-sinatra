@@ -5,21 +5,31 @@ class JobsController < ApplicationController
         erb :"jobs/index"
     end
 
-    # post '/jobs' do
-    #     authenticate!
-    #     client = current_user.clients.build(params[:client])
-    #     if client.save
-    #         redirect '/clients'
-    #     else
-    #         flash[:message] = client.errors.collect{|field, error| "#{field.to_s.capitalize}: #{error}"}.join("<br/>")
-    #         redirect '/client/new'
-    #     end
-    # end
+    post '/jobs' do
+        authenticate!
+        binding.pry
+        # client = current_user.clients.find_by(name: params[:client])
 
-    # get '/clients/new' do
-    #     authenticate!
-    #     erb :"clients/new"
-    # end
+        # if client.nil?
+        #     flash[:message] = "Error: Invalid Client Selected"
+        #     redirect '/jobs/new'
+        # end
+        # validate_access(client)
+        # job = client.jobs.build(params[:job])
+
+        # if job.save
+        #     redirect "/jobs/#{job.id}"
+        # else
+        #     flash[:message] = job.errors.collect{|field, error| "#{field.to_s.capitalize}: #{error}"}.join("<br/>")
+        #     redirect '/jobs/new'
+        # end
+    end
+
+    get '/jobs/new' do
+        authenticate!
+        @user = current_user
+        erb :"jobs/new"
+    end
 
     # get '/clients/:id' do
     #     authenticate!

@@ -1,0 +1,20 @@
+<h1>New Jobs</h1>
+<% if flash.has?(:message) %>
+    <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
+<% end %>
+<form action="/jobs" method="post">
+<input class="form-control" list="client_list" name="client" placeholder="Client Name">
+<datalist id="client_list">
+<% for client in @user.clients%>
+    <option value="<%= client.name %>">
+<% end %>
+</datalist>
+<br/>
+<input class="form-control"type="text" name="job[title]" placeholder="Name for job organizatoin" required>
+<br/>
+<input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date" required>
+<br/>
+<input class="form-control"type="number" name="job[email]" placeholder="Job Amount paid" required>
+<br/>
+<input class="btn btn-primary" type="submit" value="Create Job">
+</form>
