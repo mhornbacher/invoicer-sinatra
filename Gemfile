@@ -10,6 +10,7 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'bcrypt', '~> 3.1.7' # on windows check readme for instrucitons
+gem 'rack-flash3'
 
 group :development do
  gem 'sqlite3'

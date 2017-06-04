@@ -1,5 +1,6 @@
 require './config/environment'
 require "sinatra/reloader"
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -14,6 +15,8 @@ class ApplicationController < Sinatra::Base
         enable :reloader
     end
 
+    use Rack::Flash
+
     # configure :production do
     #     disable :show_exceptions
     # end
@@ -25,5 +28,13 @@ class ApplicationController < Sinatra::Base
     helpers do
         include Rack::Utils
         alias_method :h, :escape_html
+
+        # does not work from the files for some reason. to busy to debug
+        def block_logged_in
+            redirect('/dashboard') if logged_in?
+        end
+        def block_logged_out
+            redirect('/login') unless logged_in?
+        end
     end
 end
