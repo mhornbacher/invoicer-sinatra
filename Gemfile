@@ -6,11 +6,10 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem "sinatra-contrib", require: false # This is for Hot Reloading
 gem 'rake'
 gem 'require_all'
-gem 'sqlite3'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
-gem 'bcrypt' # on windows check readme for instrucitons
+gem 'bcrypt', '~> 3.1.7' # on windows check readme for instrucitons
 
 group :development do
  gem 'sqlite3'
