@@ -42,7 +42,6 @@ class ApplicationController < Sinatra::Base
                 flash[:message] = "Please log in to view this page"
                 redirect('/login')
             end
-
         end
         def validate_access(item, redirect_path="/dashboard")
             if item && item.user != current_user
