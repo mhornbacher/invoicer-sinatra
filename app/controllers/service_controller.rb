@@ -12,16 +12,22 @@ class ServiceController < ApplicationController
 
     get '/services/:id' do
         authenticate!
+        service = Service.find_by(id: params[:id]) # get the item from the database
+        validate_access(service)    #validate the user has access to the item
         erb :"services/show"
     end
     
     get '/services/:id/edit' do
         authenticate!
+        service = Service.find_by(id: params[:id]) # get the item from the database
+        validate_access(service)    #validate the user has access to the item
         erb :"services/edit"
     end
 
     post '/services/:id/edit' do
         authenticate!
+        service = Service.find_by(id: params[:id]) # get the item from the database
+        validate_access(service)    #validate the user has access to the item
         erb :"services/edit"
     end
     
