@@ -6,12 +6,12 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 
 # Set up development database (Sqlite3)
 configure :development do
- set :database, 'sqlite3:///dev.db'
+ set :database, 'sqlite3://db/dev.db'
  set :show_exceptions, true
 end
 # Set up test database (Sqlite3)
 configure :test do
- set :database, 'sqlite3:///test.db'
+ set :database, 'sqlite3://db/test.db'
  set :show_exceptions, true
 end
 # Set up production database (Heroku postgres) Code pulled from: http://mherman.org/blog/2013/06/08/designing-with-class-sinatra-plus-postgresql-plus-heroku/#.WTN6ZGjysuW
