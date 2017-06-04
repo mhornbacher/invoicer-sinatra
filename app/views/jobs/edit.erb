@@ -1,20 +1,24 @@
-<h1>New Jobs</h1>
+<h1>Edit Job</h1>
 <% if flash.has?(:message) %>
     <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
 <% end %>
-<form action="/jobs" method="post">
-<input class="form-control" list="client_list" name="client" placeholder="Client Name">
+<form action="/jobs/<%= @job.id %>/edit" method="post">
+<input class="form-control" list="client_list" name="client" placeholder="Client Name" value="<%=@job.client.name%>">
 <datalist id="client_list">
 <% for client in @user.clients%>
     <option value="<%= client.name %>">
 <% end %>
 </datalist>
 <br/>
-<input class="form-control"type="text" name="job[title]" placeholder="Name for job organizatoin" required>
+<%#<input class="form-control"type="text" name="job[title]" placeholder="Name for job organizatoin" required>
+<br/>%>
+<input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date" required value="<%=@job.date.strftime("%d/%m/%Y")%>">
 <br/>
-<input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date" required>
+<input class="form-control"type="number" name="job[amount_paid]" placeholder="Job Amount paid" required value="<%=@job.amount_paid%>">
+<h3>Services:</h3>
+<% for service in @user.services.order(:name)%>
+<input type="checkbox" name="job[service_ids][]" id="<%=service.name%>" <%= 'checked' if @job.services.ids.include?(service.id)%> value="<%=service.id%>"> <%=service.name%>: $<%= number_to_currency(service.price) %></input></br>
+<% end %>
 <br/>
-<input class="form-control"type="number" name="job[email]" placeholder="Job Amount paid" required>
-<br/>
-<input class="btn btn-primary" type="submit" value="Create Job">
+<input class="btn btn-primary" type="submit" value="Edit Job">
 </form>

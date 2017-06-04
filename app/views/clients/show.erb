@@ -7,6 +7,7 @@
     Phone Number: <%= @client.phone_number != "" ? "<a href=tel:#{@client.phone_number}>#{@client.phone_number}</a>" : "N/A" %>
 </h2>
 <a class="btn btn-primary" href="/clients/<%=@client.id%>/edit">Edit Client</a>
+<a class="btn btn-primary" href="/clients/<%=@job.id%>/invoice">Genrate Invoice</a>
 <form action="/clients/<%=@client.id%>/delete" method="post">
 <input name="_method" type="hidden" value="delete"/>
 <input type="submit" value="Delete Client" class="btn btn-danger">

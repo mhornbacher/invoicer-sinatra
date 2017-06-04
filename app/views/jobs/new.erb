@@ -1,4 +1,4 @@
-<h1>New Jobs</h1>
+<h1>New Job</h1>
 <% if flash.has?(:message) %>
     <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
 <% end %>
@@ -10,11 +10,15 @@
 <% end %>
 </datalist>
 <br/>
-<input class="form-control"type="text" name="job[title]" placeholder="Name for job organizatoin" required>
-<br/>
+<%#<input class="form-control"type="text" name="job[title]" placeholder="Name for job organizatoin" required>
+<br/>%>
 <input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date" required>
 <br/>
-<input class="form-control"type="number" name="job[email]" placeholder="Job Amount paid" required>
+<input class="form-control"type="number" name="job[amount_paid]" placeholder="Job Amount paid" required>
+<h3>Services:</h3>
+<% for service in @user.services.order(:name)%>
+<input type="checkbox" name="job[service_ids][]" id="<%=service.name%>" value="<%=service.id%>"> <%=service.name%>: $<%= number_to_currency(service.price) %></input></br>
+<% end %>
 <br/>
 <input class="btn btn-primary" type="submit" value="Create Job">
 </form>

@@ -42,7 +42,7 @@ class ClientController < ApplicationController
         client.update(params[:client])
         if !client.valid?
             flash[:message] = "Invalid Data: Could not update record"
-            redirect("/services/#{client.id}/edit") # this kills the controller
+            redirect("/clients/#{client.id}/edit") # this kills the controller
         end
         redirect("/clients/#{client.id}")
     end
@@ -52,6 +52,6 @@ class ClientController < ApplicationController
         client = Client.find_by(id: params[:id]) # get the item from the database
         validate_access(client)    #validate the user has access to the item
         client.delete  # and then delete it
-        redirect '/clients' # send the user back to the list of services after deleting a service (to delete more I guess)?
+        redirect '/clients' # send the user back to the list of clients after deleting a service (to delete more I guess)?
     end
 end
