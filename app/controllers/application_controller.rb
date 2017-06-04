@@ -34,6 +34,7 @@ class ApplicationController < Sinatra::Base
             redirect('/dashboard') if logged_in?
         end
         def block_logged_out
+            flash[:message] = "Please log in to view this page"
             redirect('/login') unless logged_in?
         end
     end
