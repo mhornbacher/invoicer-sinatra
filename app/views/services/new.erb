@@ -1,4 +1,7 @@
 <h1>New Service</h1>
+<% if flash.has?(:message) %>
+    <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
+<% end %>
 <form action="/services" method="post">
 <input class="form-control" type="text" name="service[name]" placeholder="Service Name" required>
 <br/>

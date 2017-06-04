@@ -1,8 +1,8 @@
 <h1>My Services</h1>
 <ul>
 <% for service in current_user.services.order(:name) %>
-<li><a href="/services/<%=service.id%>"><%= service.name%>: <%= service.price %> </a></li>
+<li><a href="/services/<%=service.id%>"><%= service.name%>: $<%= service.price %> </a></li>
 <% end %>
 </ul>
 <br/>
-<a class="btn btn-primary">Add Service</a>
+<a class="btn btn-primary" href="/services/new">Add Service</a>

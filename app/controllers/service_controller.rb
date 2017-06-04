@@ -5,6 +5,17 @@ class ServiceController < ApplicationController
         erb :"services/index"
     end
 
+    post '/services' do
+        authenticate!
+        service = current_user.services.build(params[:service])
+        if service.save
+            redirect '/services'
+        else
+            flash[:message] = user.errors.collect{|field, error| "#{field.to_s.capitalize}: #{error}"}.join("<br/>")
+            redirect '/services/new'
+        end
+    end
+
     get '/services/new' do
         authenticate!
         erb :"services/new"
@@ -28,7 +39,12 @@ class ServiceController < ApplicationController
         authenticate!
         service = Service.find_by(id: params[:id]) # get the item from the database
         validate_access(service)    #validate the user has access to the item
-        erb :"services/edit"
+        service.update(params[:service])
+        if !service.valid?
+            flash[:message] = "Invalid Data: Could not update record"
+            redirect("/services/#{service.id}/edit") # this kills the controller
+        end
+        redirect("/services/#{service.id}")
     end
     
     delete '/services/:id/delete' do
