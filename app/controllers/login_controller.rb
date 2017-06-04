@@ -4,7 +4,16 @@ class LoginController < ApplicationController
         erb :"login/signup"
     end
     post '/signup' do
-        binding.pry
+        user = User.new(params[:user])
+        if user.save
+            session[:id] = user.id
+            redirect '/dashboard'
+        else
+            flash[:message] = user.errors.collect{|field, error| "#{field.to_s.capitalize}: #{error}"}.join("<br/>")
+            # binding.pry
+            redirect '/signup'
+        end
+        redirect '/signup'
     end
 
     get '/login' do
