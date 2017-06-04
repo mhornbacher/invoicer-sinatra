@@ -14,6 +14,10 @@ class ApplicationController < Sinatra::Base
         enable :reloader
     end
 
+    configure :production do
+        disable :show_exceptions
+    end
+
     get '/' do
         erb :homepage
     end
