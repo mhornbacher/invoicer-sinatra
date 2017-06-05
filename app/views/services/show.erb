@@ -1,7 +1,21 @@
-<h1>Service: <%=@service.name%></h1>
-<h2>Price: $<%= @service.price%></h2>
+<h1><%=@service.name%></h1>
+<h4>Price: $<%= @service.price%></h4>
+<h4>Total Jobs: $<%= @service.jobs.count%></h4>
+<br/>
+<h2>Jobs included in:</h2>
+<table class="table table-bordered table-striped">
+<tr><th>Name</th> <th>Price</th></tr>
+<% for job in @service.jobs.order(:name) %>
+<tr>
+    <td><a href="/jobs/<%=job.id%>"><%= job.name%></a></td>
+    <td> $<%= number_to_currency(job.total_price) %> </td>
+</tr>
+<% end %>
+</table>
+
+<br/>
 <a class="btn btn-primary" href="/services/<%=@service.id%>/edit">Edit Service</a>
-<form action="/services/<%=@service.id%>/delete" method="post">
+<form class="inline" action="/services/<%=@service.id%>/delete" method="post">
 <input name="_method" type="hidden" value="delete"/>
 <input type="submit" value="Delete Service" class="btn btn-danger">
 </form>

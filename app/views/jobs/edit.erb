@@ -10,7 +10,7 @@
 <% end %>
 </datalist>
 <br/>
-<input class="form-control"type="text" name="job[name]" placeholder="Job Name" required>
+<input class="form-control"type="text" name="job[name]" placeholder="Job Name" required value="<%=@job.name%>">
 <br/>
 <input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date" required value="<%=@job.date.strftime("%d/%m/%Y")%>">
 <br/>

@@ -1,9 +1,14 @@
-<h1>My Jobs</h1>
-<ul>
-<% for job in current_user.jobs.order(date: :desc) %>
-<li><a href="/jobs/<%=job.id%>"><%= job.client.name%>: <%= job.date.strftime("%A, %B %d %Y (%Z)") %> 
-<span class="<%= job.balance >= 0 ? 'green_text' : 'red_text'%>">(<%= number_to_currency(job.balance) %>)</span></a></li>
+<h1 class="title">Jobs</h1>
+<a class="btn btn-primary btn-add" href="/jobs/new">Add Job</a>
+
+<br/><br/>
+<table class="table table-bordered table-striped">
+<tr><th>Name</th> <th>Client</th><th>Date</th></tr>
+<% for job in current_user.jobs.order(date: :desc)  %>
+<tr>
+    <td><a href="/jobs/<%=job.id%>"><%= job.name%></a></td>
+    <td><a href="/clients/<%=job.client.id%>"><%= job.client.name%></a></td>
+    <td><%= job.date.strftime("%A, %B %d %Y") %> </td>
+</tr>
 <% end %>
-</ul>
-<br/>
-<a class="btn btn-primary" href="/jobs/new">Add Job</a>
+</table>

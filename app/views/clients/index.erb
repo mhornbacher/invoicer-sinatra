@@ -1,8 +1,12 @@
-<h1>My Clients</h1>
-<ul>
+<h1 class="title">Clients</h1>
+<a class="btn btn-primary btn-add" href="/clients/new">Add Client</a>
+<br/><br/>
+<table class="table table-bordered table-striped">
+<tr><th>Name</th> <th>Email</th></tr>
 <% for client in current_user.clients.order(:name) %>
-<li><a href="/clients/<%=client.id%>"><%= client.name%></a></li>
+<tr>
+    <td><a href="/clients/<%=client.id%>"><%= client.name%></a></td>
+    <td><%= client.email %> </td>
+</tr>
 <% end %>
-</ul>
-<br/>
-<a class="btn btn-primary" href="/clients/new">Add Client</a>
+</table>

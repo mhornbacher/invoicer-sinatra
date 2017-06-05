@@ -27,3 +27,6 @@ nav.navbar.navbar-default {
     float: right;
     margin-top: 20px;
 }
+form.inline {
+    display: inline-block;
+}

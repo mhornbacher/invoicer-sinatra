@@ -4,22 +4,34 @@
 <div class="row center">
     <div class="col-md-4">
         <h2 class="center"><a href="/services">Services</a></h2>
+        <% if current_user.services.count > 0 %>
         <p>Total Services: <%=current_user.services.count%><br/>
         Average Price: $<%=number_to_currency(current_user.services.average(:price))%></p>
+        <% else %>
+        <h4>Create Some Services</h4>
+        <% end %>
     </div>
     <div class="col-md-4">
         <h2 class="center"><a href="/clients">Clients</a></h2>
+        <% if current_user.clients.count > 0 %>
         <p>Total Clients: <%=current_user.clients.count%><br />
         Average Balance: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.balance}).to_i / current_user.clients.size%><br />
         Total Balance: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.balance})%><br />
         Gross Revenue: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.total})%><br />
         Recived: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.total_paid})%></p>
+        <% else %>
+        <h4>Create Some Clients</h4>
+        <% end %>
     </div>
     <div class="col-md-4">
         <h2 class="center"><a href="/jobs">Jobs</a></h2>
-        <p>Total Services: <%=current_user.services.count%><br/>
+        <% if current_user.jobs.count > 0 %>
+        <p>Total Jobs: <%=current_user.jobs.count%><br/>
         Average Value: $<%=number_to_currency(current_user.jobs.inject(0){|sum, client| sum + client.total_price}).to_i / current_user.jobs.size%><br/>
         Average Balance: $<%=number_to_currency(current_user.jobs.inject(0){|sum, client| sum + client.balance}).to_i / current_user.jobs.size%><br/>
         Total Balance: $<%=number_to_currency(current_user.jobs.inject(0){|sum, client| sum + client.balance})%></p>
+        <% else %>
+        <h4>Create Some jobs</h4>
+        <% end %>
     </div>
 </dib>

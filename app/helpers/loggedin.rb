@@ -3,6 +3,7 @@ module Loggedin
         !!session[:id]
     end
     def current_user
-        User.find_by(id: session[:id])
+        # Saves an insane number of calls From 37 down to 8 :-)
+        @current_user ||= User.find_by(id: session[:id])
     end
 end
