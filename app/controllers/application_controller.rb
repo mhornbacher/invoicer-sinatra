@@ -1,5 +1,6 @@
 require './config/environment'
 require "sinatra/reloader"
+require "sinatra/content_for"
 require 'rack-flash'
 
 class ApplicationController < Sinatra::Base

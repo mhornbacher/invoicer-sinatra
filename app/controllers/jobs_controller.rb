@@ -39,7 +39,7 @@ class JobsController < ApplicationController
     get '/jobs/:id/invoice' do
         authenticate!
         @job = Job.find_by(id: params[:id])
-        erb :"jobs/invoice"
+        erb :"jobs/invoice", layout: false # get rid of the inputs
     end
     
     get '/jobs/:id/edit' do
