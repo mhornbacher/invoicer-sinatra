@@ -27,6 +27,13 @@ class ClientController < ApplicationController
         validate_access(@client)    #validate the user has access to the item
         erb :"clients/show"
     end
+
+    get '/clients/:id/invoice' do
+        authenticate!
+        @client = Client.find_by(id: params[:id]) # get the item from the database
+        validate_access(@client)
+        erb :"clients/invoice", layout: false # get rid of the inputs
+    end
     
     get '/clients/:id/edit' do
         authenticate!

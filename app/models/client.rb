@@ -3,4 +3,16 @@ class Client < ActiveRecord::Base
     has_many :jobs
 
     validates :name, :email, presence: true
+
+    def balance
+        self.jobs.inject(0){|sum, job| sum + job.balance }
+    end
+    
+    def total
+        self.jobs.inject(0){|sum, job| sum + job.total_price }
+    end
+    
+    def total_paid
+        self.jobs.inject(0){|sum, job| sum + job.amount_paid }
+    end
 end

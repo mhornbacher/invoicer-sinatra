@@ -6,3 +6,11 @@
     <a href="/login" class="btn btn-primary btn-lg">Login</a>
     <a href="/signup" class="btn btn-primary btn-lg">Sign Up</a>
 </div>
+<div class="center">
+    <h2>Our users:</h2>
+    <%for user in User.all %>
+    <div class="col-md-3">
+        <h5><%=user.name%></h5>
+    <div>
+    <%end%>
+</div>
