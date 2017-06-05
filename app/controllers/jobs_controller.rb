@@ -57,6 +57,7 @@ class JobsController < ApplicationController
     post '/jobs/:id/edit' do
         authenticate!
         job = Job.find_by(id: params[:id]) # get the item from the database
+        validate_access(job.client) # Prevent users from editing other users jobs
         client = current_user.clients.find_by(name: params[:client])
         if client.nil?
             flash[:warning] = "Warning: Created New Client with Unknown Email Address"
