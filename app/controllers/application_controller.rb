@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
     # end
 
     get '/' do
-        erb :homepage
+        erb :homepage, layout: false
     end
     get '/dashboard' do
         authenticate!

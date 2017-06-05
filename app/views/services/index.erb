@@ -1,8 +1,10 @@
-<h1>My Services</h1>
-<ul>
+<h1 class="title">My Services</h1>
+<a class="btn btn-primary btn-add" href="/services/new">Add Service</a>
+<br/><br/>
+<table class="table table-bordered table-striped">
+<tr><th>Name</th> <th>Price</th></tr>
 <% for service in current_user.services.order(:name) %>
-<li><a href="/services/<%=service.id%>"><%= service.name%>: $<%= service.price %> </a></li>
+<tr><td><a href="/services/<%=service.id%>"><%= service.name%></a></td><td> $<%= number_to_currency(service.price) %> </td></tr>
 <% end %>
-</ul>
-<br/>
-<a class="btn btn-primary" href="/services/new">Add Service</a>
+</table>
+

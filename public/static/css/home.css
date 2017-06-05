@@ -1,0 +1,8 @@
+body{
+    background: url('/static/img/home.jpeg') center center no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.jumbotron{
+    margin-top: 20vh;
+}
