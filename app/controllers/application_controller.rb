@@ -4,6 +4,7 @@ require "sinatra/content_for"
 require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
+    helpers Sinatra::ContentFor
 
     configure do
         set :public_folder, 'public'    # Load the public assets

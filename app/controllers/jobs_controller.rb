@@ -32,6 +32,7 @@ class JobsController < ApplicationController
         authenticate!
         @user = current_user
         @job = Job.find_by(id: params[:id]) # get the item from the database
+        redirect('/jobs') if @job.nil?
         validate_access(@job.client)    #validate the user has access to the item
         erb :"jobs/show"
     end
@@ -39,6 +40,8 @@ class JobsController < ApplicationController
     get '/jobs/:id/invoice' do
         authenticate!
         @job = Job.find_by(id: params[:id])
+        redirect('/jobs') if @job.nil?
+        validate_access(@job.client)
         erb :"jobs/invoice", layout: false # get rid of the inputs
     end
     
@@ -46,6 +49,7 @@ class JobsController < ApplicationController
         authenticate!
         @user = current_user
         @job = Job.find_by(id: params[:id]) # get the item from the database
+        redirect('/jobs') if @job.nil?
         validate_access(@job.client)    #validate the user has access to the item
         erb :"jobs/edit"
     end
@@ -71,6 +75,7 @@ class JobsController < ApplicationController
     delete '/jobs/:id/delete' do
         authenticate!   #check that they are logged in at all
         job = Job.find_by(id: params[:id]) # get the item from the database
+        redirect('/jobs') if job.nil?
         validate_access(job.client)    #validate the user has access to the item
         job.delete  # and then delete it
         redirect '/jobs' # send the user back to the list of services after deleting a service (to delete more I guess)?

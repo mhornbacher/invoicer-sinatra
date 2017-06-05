@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Project Invoice</h1>
         <h3>
-        From: <%= @job.client.user.username %> <br />
+        From: <%= @job.client.user.name %> <br />
         To: <%= @job.client.name %><br />
         Date: <%= Time.now.strftime("%m/%d/%Y")%>
         </h3>

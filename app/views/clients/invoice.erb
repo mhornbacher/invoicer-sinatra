@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= @page_title or "Client Invoice" %></title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Client Invoice</h1>
+        <h3>
+        From: <%= @client.user.name %> <br />
+        To: <%= @client.name %><br />
+        Date: <%= Time.now.strftime("%m/%d/%Y")%>
+        </h3>
+        <br /><br />
+        <h2>Jobs</h2>
+        <table class="table table-bordered table-striped">
+            <tr><th>Job Date</th> <th>Balance</th></tr>
+            <% for job in @client.jobs %>
+            <tr><td><%=job.name%></td> <td><%=job.price%></td></tr>
+            <% end %>
+        </table>
+        <br/><br/>
+        <h3>
+        Total $<strong><%=@client.total%></strong><br/>
+        Amount Paid $<strong><%=@client.total_paid%></strong><br/>
+        Remaining Balance $<strong><%=@client.balance%></strong><br/>
+        </h3>
+    </div>
+</body>
+</html>
