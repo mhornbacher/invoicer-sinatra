@@ -18,7 +18,7 @@
         Average Balance: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.balance}).to_i / current_user.clients.size%><br />
         Total Balance: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.balance})%><br />
         Gross Revenue: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.total})%><br />
-        Recived: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.total_paid})%></p>
+        Received: $<%=number_to_currency(current_user.clients.inject(0){|sum, client| sum + client.total_paid})%></p>
         <% else %>
         <h4>Create Some Clients</h4>
         <% end %>
