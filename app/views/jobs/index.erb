@@ -3,12 +3,12 @@
 
 <br/><br/>
 <table class="table table-bordered table-striped">
-<tr><th>Name</th> <th>Client</th><th>Date</th></tr>
-<% for job in current_user.jobs.order(date: :desc)  %>
-<tr>
-    <td><a href="/jobs/<%=job.id%>"><%= job.name%></a></td>
-    <td><a href="/clients/<%=job.client.id%>"><%= job.client.name%></a></td>
-    <td><%= job.date.strftime("%A, %B %d %Y") %> </td>
-</tr>
-<% end %>
+    <tr><th>Name</th> <th>Client</th><th>Date</th></tr>
+    <% for job in current_user.jobs.order(date: :desc)  %>
+    <tr>
+        <td><a href="/jobs/<%=job.id%>"><%= job.name%></a></td>
+        <td><a href="/clients/<%=job.client.id%>"><%= job.client.name%></a></td>
+        <td><%= job.date.strftime("%A, %B %d %Y") %> </td>
+    </tr>
+    <% end %>
 </table>

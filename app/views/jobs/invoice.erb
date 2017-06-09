@@ -9,23 +9,23 @@
     <div class="container">
         <h1>Project Invoice</h1>
         <h3>
-        From: <%= @job.client.user.name %> <br />
-        To: <%= @job.client.name %><br />
-        Date: <%= Time.now.strftime("%m/%d/%Y")%>
+            From: <%= @job.client.user.name %> <br />
+            To: <%= @job.client.name %><br />
+            Date: <%= Time.now.strftime("%m/%d/%Y")%>
         </h3>
         <br /><br />
         <h2>Services provided</h2>
         <table class="table table-bordered table-striped">
             <tr><th>Service</th> <th>Price</th></tr>
             <% for service in @job.services %>
-            <tr><td><%=service.name%></td> <td><%=service.price%></td></tr>
+                <tr><td><%=service.name%></td> <td><%=service.price%></td></tr>
             <% end %>
         </table>
         <br/><br/>
         <h3>
-        Total $<strong><%=@job.total_price%></strong><br/>
-        Amount Paid $<strong><%=@job.amount_paid%></strong><br/>
-        Remaining Balance $<strong><%=@job.balance%></strong><br/>
+            Total $<strong><%=@job.total_price%></strong><br/>
+            Amount Paid $<strong><%=@job.amount_paid%></strong><br/>
+            Remaining Balance $<strong><%=@job.balance%></strong><br/>
         </h3>
     </div>
 </body>

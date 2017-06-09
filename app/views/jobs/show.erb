@@ -5,24 +5,24 @@
 <br/>
 <h2>Job Details</h2>
 <table class="table table-bordered table-striped">
-<tr><th>Detail</th> <th>Value</th></tr>
-<tr>
-    <td>Total Value</td>
-    <td><span class="<%= @job.total_price >= 0 ? 'green_text' : 'red_text'%>">$<%= number_to_currency(@job.total_price) %></span></td>
-</tr>
-<tr>
-    <td>Amount Recived</td>
-    <td><span class="<%= @job.amount_paid >= 0 ? 'green_text' : 'red_text'%>">$<%= number_to_currency(@job.amount_paid) %></span></td>
-</tr>
-<tr>
-    <td>Remaining Balance</td>
-    <td><span class="<%= @job.balance >= 0 ? 'green_text' : 'red_text'%>">$<%= number_to_currency(@job.balance) %></span></td>
-</tr>
+    <tr><th>Detail</th> <th>Value</th></tr>
+    <tr>
+        <td>Total Value</td>
+        <td><span class="<%= @job.total_price >= 0 ? 'green_text' : 'red_text'%>">$<%= number_to_currency(@job.total_price) %></span></td>
+    </tr>
+    <tr>
+        <td>Amount Recived</td>
+        <td><span class="<%= @job.amount_paid >= 0 ? 'green_text' : 'red_text'%>">$<%= number_to_currency(@job.amount_paid) %></span></td>
+    </tr>
+    <tr>
+        <td>Remaining Balance</td>
+        <td><span class="<%= @job.balance >= 0 ? 'green_text' : 'red_text'%>">$<%= number_to_currency(@job.balance) %></span></td>
+    </tr>
 </table>
 <br/>
 <a class="btn btn-primary" href="/jobs/<%=@job.id%>/edit">Edit Job</a>
 <a class="btn btn-primary" href="/jobs/<%=@job.id%>/invoice">Generate Invoice</a>
 <form class="inline" action="/jobs/<%=@job.id%>/delete" method="post">
-<input name="_method" type="hidden" value="delete"/>
-<input type="submit" value="Delete Job" class="btn btn-danger">
+    <input name="_method" type="hidden" value="delete"/>
+    <input type="submit" value="Delete Job" class="btn btn-danger">
 </form>

@@ -3,28 +3,28 @@
     <div class="alert alert-danger" role="alert"><%= flash[:message] %></div>
 <% end %>
 <form action="/jobs" method="post">
-<input class="form-control" list="client_list" name="client" placeholder="Client Name">
-<datalist id="client_list">
-<% for client in @user.clients%>
-    <option value="<%= client.name %>">
-<% end %>
-</datalist>
-<br/>
-<input class="form-control"type="text" name="job[name]" placeholder="Job Name" required>
-<br/>
-<input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date" required>
-<br/>
-<input class="form-control"type="number" name="job[amount_paid]" placeholder="Job Amount paid" required>
-<h3>Services:</h3>
-<% for service in @user.services.order(:name)%>
-<input type="checkbox" name="job[service_ids][]" id="<%=service.name%>" value="<%=service.id%>"> <%=service.name%>: $<%= number_to_currency(service.price) %></input></br>
-<% end %>
-<br/>
-<input class="btn btn-primary" type="submit" value="Create Job">
+    <input class="form-control" list="client_list" name="client" placeholder="Client Name">
+    <datalist id="client_list">
+        <% for client in @user.clients%>
+            <option value="<%= client.name %>">
+        <% end %>
+    </datalist>
+    <br/>
+    <input class="form-control"type="text" name="job[name]" placeholder="Job Name" required>
+    <br/>
+    <input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date" required>
+    <br/>
+    <input class="form-control"type="number" name="job[amount_paid]" placeholder="Job Amount paid" required>
+    <h3>Services:</h3>
+    <% for service in @user.services.order(:name)%>
+        <input type="checkbox" name="job[service_ids][]" id="<%=service.name%>" value="<%=service.id%>"> <%=service.name%>: $<%= number_to_currency(service.price) %></input></br>
+    <% end %>
+    <br/>
+    <input class="btn btn-primary" type="submit" value="Create Job">
 </form>
 
 <% content_for :scripts do %>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="/static/js/jobs/new.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/static/js/jobs/new.js"></script>
 <% end %>
 
