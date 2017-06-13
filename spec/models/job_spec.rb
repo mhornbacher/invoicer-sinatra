@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Job do
     let(:job){Job.new(date: Time.now, amount_paid: 50)}
     before do
-        @user = User.create(username: "user1", password: "test")
+        @user = User.create(username: "user1", password: "test", email: "fake.email@spam.net")
         @service1 = Service.create(name: "Web Development", price: 500)
         @service2 = Service.create(name: "Fix Server", price: 250)
         @client = Client.create(name: "client1", email: "client@clients.net", phone_number: "347 - 756 (8976)")

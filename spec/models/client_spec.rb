@@ -3,20 +3,12 @@ require 'spec_helper'
 describe Client do
 
     before do
-        @user = User.create(username: "user1", password: "test")
+        @user = User.create(username: "user1", password: "test", email: "not.real@world.com")
         @service1 = Service.create(name: "Web Development", price: 500)
         @service2 = Service.create(name: "Fix Server", price: 250)
         @client = Client.create(name: "client1", email: "client@clients.net", phone_number: "347 - 756 (8976)")
     end
-
-    # clear the database
-    after do
-        User.destroy_all
-        Service.destroy_all
-        Job.destroy_all
-        Client.destroy_all
-    end
-
+    
     it 'validates that it has a name' do
         expect(Client.new).to_not be_valid
         expect(Client.new(name: "Sam")).to be_valid
