@@ -1,4 +1,4 @@
-ENV["SINATRA_ENV"] = "test" # Set up the env correctly.
+ENV["RACK_ENV"] = "test" # Set up the env correctly.
 
 require_relative '../config/environment' # Load all the required files
 require 'rack/test'
@@ -6,7 +6,7 @@ require 'capybara/rspec'
 require 'capybara/dsl'
 
 if ActiveRecord::Migrator.needs_migration?
-  raise 'Migrations are pending. Run `rake db:migrate SINATRA_ENV=test` to resolve the issue.'
+  raise 'Migrations are pending. Run `rake db:migrate RACK_ENV=test` to resolve the issue.'
 end
 
 ActiveRecord::Base.logger = nil

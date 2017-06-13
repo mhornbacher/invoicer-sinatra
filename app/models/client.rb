@@ -2,7 +2,7 @@ class Client < ActiveRecord::Base
     belongs_to :user
     has_many :jobs
 
-    validates :name, :email, presence: true
+    validates :name, presence: true
 
     def balance
         self.jobs.inject(0){|sum, job| sum + job.balance }

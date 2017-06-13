@@ -1,8 +1,8 @@
-ENV['SINATRA_ENV'] ||= "development" # default is development
+ENV['RACK_ENV'] ||= "development" # default is development
 
 # get the bundler tasks for the given environment
 require 'bundler/setup'
-Bundler.require(:default, ENV['SINATRA_ENV'])
+Bundler.require(:default, ENV['RACK_ENV'])
 
 # Set up development database (Sqlite3)
 configure :development do

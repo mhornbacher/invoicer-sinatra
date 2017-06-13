@@ -23,7 +23,9 @@ group :production do
 end
 
 # For the testing suite
-group :test do
+group :test do 
+  gem 'sqlite3'
+  gem "tux"
   gem 'rspec'
   gem 'capybara'
   gem 'rack-test'
