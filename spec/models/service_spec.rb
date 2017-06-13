@@ -20,8 +20,6 @@ describe Service do
         service.save
         expect(service.user).to eq(@user)
         expect(@user.services).to include(service)
-
-        user.destroy # pervent unique user errors
     end
     
     it 'has many jobs through job_services' do
