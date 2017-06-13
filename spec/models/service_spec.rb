@@ -6,8 +6,14 @@ describe Service do
     before do
         @user = User.create(username: "test", password: "test", email: "fake@email.net")
     end
-    
 
+    it 'validates that name and price are present' do
+        expect(Service.new).to_not be_valid
+        expect(Service.new(name: "test")).to_not be_valid
+        expect(Service.new(price: 50)).to_not be_valid
+        expect(Service.new(name: "test", price: 50)).to be_valid
+    end
+    
     it 'belongs to a user' do
         service.user = @user
 
