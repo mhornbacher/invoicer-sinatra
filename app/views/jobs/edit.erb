@@ -12,7 +12,7 @@
     <br/>
     <input class="form-control"type="text" name="job[name]" placeholder="Job Name" required value="<%=@job.name%>">
     <br/>
-    <input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date" required value="<%=@job.date.strftime("%d/%m/%Y")%>">
+    <input class="form-control" type="text" id="datepicker" name="job[date]" placeholder="Job Date (DD/MM/YY)" required value="<%=@job.date.strftime("%d/%m/%Y")%>">
     <br/>
     <input class="form-control"type="number" name="job[amount_paid]" placeholder="Job Amount paid" required value="<%=@job.amount_paid%>">
     <h3>Services:</h3>
